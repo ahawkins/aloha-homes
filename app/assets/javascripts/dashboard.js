@@ -8,7 +8,7 @@ $(function() {
       .removeClass('far');
   });
 
-  $('.toggle-link').on('ajax:beforeSend', function(event) {
+  $('.toggle-link').on('ajax:complete', function(event) {
     $(event.target)
       .removeClass('fa-spin')
       .removeClass('fa-sync');
