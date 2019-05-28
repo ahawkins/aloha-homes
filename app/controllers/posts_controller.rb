@@ -4,6 +4,6 @@ class PostsController < ApplicationController
   end
 
   def discard
-    @discarded = Post.toggle!(id: params[:id], flag: :liked)
+    @discarded = Post.toggle!(id: params[:id], flag: :discarded)
   end
 end
