@@ -19,12 +19,12 @@ class Post
   end
 
   def liked?
-    counter = Rails.cache.read([ :liked, id ]) || 0
+    counter = Rails.cache.read([ :liked, id ]).to_i || 0
     counter % 2 == 1
   end
 
   def discarded?
-    counter = Rails.cache.read([ :discarded, id ]) || 0
+    counter = Rails.cache.read([ :discarded, id ]).to_i || 0
     counter % 2 == 1
   end
 
