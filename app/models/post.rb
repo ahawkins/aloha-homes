@@ -12,7 +12,7 @@ class Post
       if Rails.cache.exist?([ flag, id ])
         Rails.cache.increment([ flag, id ]) % 2 == 1
       else
-        Rails.cache.write([ flag, id ], 1)
+        Rails.cache.write([ flag, id ], 1, raw: true)
         true
       end
     end
