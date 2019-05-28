@@ -1,0 +1,53 @@
+<section class="section">
+	<div class="container">
+		<div class="columns is-multiline">
+			<% @posts.each do |post| %>
+				<div class="column is-3" id="<%= post.id %>">
+					<div class="card card-post">
+						<div class="card-image">
+							<%= link_to like_post_path(post), class: 'toggle-link link-like', method: :put, remote: true do %>
+								<% if post.liked? %>
+									<i class="fas fa-heart has-text-danger is-size-4"></i>
+								<% else %>
+									<i class="far fa-heart has-text-danger is-size-4"></i>
+								<% end %>
+							<% end %>
+
+							<%= link_to discard_post_path(post), class: 'toggle-link link-discard', method: :put, remote: true do %>
+								<% if post.discarded? %>
+									<i class="fas fa-trash-alt has-text-white is-size-4"></i>
+								<% else %>
+									<i class="far fa-trash-alt has-text-white is-size-4"></i>
+								<% end %>
+							<% end %>
+
+							<%= link_to post.link, target: :new do %>
+								<figure class="image is-4by3">
+									<%= image_tag post.cover %>
+								</figure>
+							<% end %>
+						</div>
+						<div class="card-content">
+							<div class="content">
+								<div>
+									<p class="title is-size-3"><%= number_to_currency(post.price, precision: 0) %></p>
+									<p class="subtitle is-size-6"><%= post.location %></p>
+								</div>
+							</div>
+							<div>
+								<div class="columns">
+									<div class="column has-text-centered">
+										<p><strong><%= post.bedrooms %></strong> <span class="has-text-grey">Bedrooms</span></p>
+									</div>
+									<div class="column has-text-centered">
+										<p><strong><%= post.bathrooms %></strong> <span class="has-text-grey">Bathrooms</span></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

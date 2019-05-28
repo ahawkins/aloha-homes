@@ -1,0 +1,5 @@
+<% if @liked %>
+	$("#<%= params[:id] %> .link-like i").addClass("fas").removeClass("far");
+<% else %>
+	$("#<%= params[:id] %> .link-like i").addClass("far").removeClass("fas");
+<% end %>
