@@ -4,7 +4,16 @@ class DashboardController < ApplicationController
 
     @posts.concat(scrape_hicentral)
     @posts.concat(scrape_craigslist)
-    # @posts.concat(dummy_results)
+
+    if(params[:liked])
+      @posts.select!(&:liked?)
+    end
+
+    if(params[:discarded])
+      @posts.select!(&:discarded?)
+    else
+      @posts.reject!(&:discarded?)
+    end
 
     @posts.sort! do |p1, p2|
       p2.date <=> p1.date
