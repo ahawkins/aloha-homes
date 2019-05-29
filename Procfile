@@ -1,2 +1,2 @@
 release: rails db:migrate db:seed
-web: bundle exec rails -s $PORT
+web: bundle exec rails s -p $PORT
