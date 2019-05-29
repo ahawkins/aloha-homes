@@ -1,4 +1,4 @@
-<% if @liked %>
+<% if @post.liked? %>
 	$("#<%= params[:id] %> .link-like i:not(.fa-spin)").addClass("fas").removeClass("far");
 <% else %>
 	$("#<%= params[:id] %> .link-like i:not(.fa-spin)").addClass("far").removeClass("fas");

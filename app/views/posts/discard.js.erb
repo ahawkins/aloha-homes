@@ -1,4 +1,4 @@
-<% if @discarded %>
+<% if @post.discarded? %>
 	$("#<%= params[:id] %> .link-discard i:not(.fa-spin)").addClass("fas").removeClass("far");
 	$("#<%= params[:id] %>").hide();
 <% else %>

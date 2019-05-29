@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   def like
-    @liked = Post.toggle!(id: params[:id], flag: :liked)
+    @post = Post.find(params[:id])
+    @post.toggle!(:liked)
   end
 
   def discard
-    @discarded = Post.toggle!(id: params[:id], flag: :discarded)
+    @post = Post.find(params[:id])
+    @post.toggle!(:discarded)
   end
 end

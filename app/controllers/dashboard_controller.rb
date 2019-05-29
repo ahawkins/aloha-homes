@@ -1,15 +1,15 @@
 class DashboardController < ApplicationController
   def show
-    @posts = Post.order(date: :desc).to_a
+    @posts = Post.order(date: :desc)
 
     if(params[:liked])
-      @posts.select!(&:liked?)
+      @posts = @posts.where(liked: true)
     end
 
     if(params[:discarded])
-      @posts.select!(&:discarded?)
+      @posts = @posts.where(discarded: true)
     else
-      @posts.reject!(&:discarded?)
+      @posts = @posts.where(discarded: false)
     end
   end
 end
