@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  after_action :record_views
+
   def show
     @posts = Post.order(date: :desc)
 
@@ -11,5 +13,11 @@ class DashboardController < ApplicationController
     else
       @posts = @posts.where(discarded: false)
     end
+  end
+
+  private
+  def record_views
+    session[:viewed] ||= [ ]
+    session[:viewed].concat(@posts.pluck(:id))
   end
 end

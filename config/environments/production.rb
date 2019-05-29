@@ -90,4 +90,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.cache_store = :redis_cache_store, { url: ENV.fetch('REDISTOGO_URL') }
+
+  config.session_store = :redis_store, {
+    servers: [ "#{ENV.fetch('REDISTOGO_URL')}/session" ],
+    key: "_#{Rails.application.class.parent_name.downcase}_session",
+    threadsafe: false
+  }
 end

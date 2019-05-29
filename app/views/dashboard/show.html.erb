@@ -55,7 +55,12 @@
 							<div class="card-content">
 								<div class="content">
 									<div>
-										<p class="title is-size-3"><%= number_to_currency(post.price, precision: 0) %></p>
+										<p class="title is-size-3">
+											<%= number_to_currency(post.price, precision: 0) %>
+											<% if !viewed?(post) %>
+												<span class="tag is-warning">New!</span>
+											<% end %>
+										</p>
 										<p class="subtitle is-size-6"><%= post.location %></p>
 									</div>
 								</div>
