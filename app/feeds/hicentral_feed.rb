@@ -46,7 +46,7 @@ class HicentralFeed
         post.cover = li.css('img').first['src']
         post.location =  text2.lines.last.split(', ').first.strip
         post.date = date
-
+      end.tap do |post|
         yield post if block_given?
       end
     end

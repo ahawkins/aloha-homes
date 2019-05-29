@@ -18,7 +18,7 @@ class CraigslistFeed
         post.cover = item[:enc_enclosure_resource]
         post.date = item.dc_date
         post.location = location ? location[1] : nil
-
+      end.tap do |post|
         yield post if block_given?
       end
     end

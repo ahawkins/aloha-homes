@@ -11,9 +11,11 @@ class Post < ApplicationRecord
 
     def seed(link)
       if(exists?(link: link))
-        Post.find_by_link!(link).save! do |post|
+        post = Post.find_by_link!(link)
+        post.save! do |post|
           yield post
         end
+        post
       else
         find_or_create_by!(link: link) do |post|
           yield post
