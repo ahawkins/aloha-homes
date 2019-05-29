@@ -86,5 +86,8 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
+
   config.cache_store = :redis_cache_store, { url: ENV.fetch('REDISTOGO_URL') }
 end
