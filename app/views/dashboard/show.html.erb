@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="columns is-multiline">
 				<% @posts.each do |post| %>
-					<div class="column is-3" id="<%= post.id %>">
+					<div class="column is-4-tablet is-3-desktop" id="<%= post.id %>">
 						<div class="card card-post">
 							<div class="card-image">
 								<%= link_to like_post_path(post), class: 'toggle-link link-like', method: :put, remote: true do %>
