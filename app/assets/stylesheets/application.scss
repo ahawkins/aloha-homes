@@ -1,5 +1,14 @@
 @import "bulma";
 
+.card-post {
+	border-radius: 0.5rem;
+
+	.card-image .image img {
+		border-top-left-radius: 0.5rem;
+		border-top-right-radius: 0.5rem;
+	}
+}
+
 .link-like {
 	position: absolute;
 	z-index: 1;
