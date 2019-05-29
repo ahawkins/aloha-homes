@@ -43,8 +43,8 @@ class HicentralFeed
       link = "http://propertysearch.hicentral.com/HBR/ForRent/#{li.css('a').first['href']}"
 
       Post.seed(link) do |post|
-        post.price =  price,
-        post.bedrooms =  bed_rooms
+        post.price = price
+        post.bedrooms = bed_rooms
         post.bathrooms = bath_rooms
         post.sqft = sqft
         post.cover = li.css('img').first['src']
