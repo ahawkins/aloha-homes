@@ -1,5 +1,6 @@
 <% if @discarded %>
-	$("#<%= params[:id] %> .link-discard i").addClass("fas").removeClass("far");
+	$("#<%= params[:id] %> .link-discard i:not(.fa-spin)").addClass("fas").removeClass("far");
+	$("#<%= params[:id] %>").hide();
 <% else %>
-	$("#<%= params[:id] %> .link-discard i").addClass("far").removeClass("fas");
+	$("#<%= params[:id] %> .link-discard i.fa-spin)").addClass("far").removeClass("fas");
 <% end %>

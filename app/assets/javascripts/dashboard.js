@@ -1,16 +1,13 @@
 $(function() {
   $('.toggle-link').on('ajax:beforeSend', function(event) {
-    $(event.target)
-      .removeClass('fa-heart')
-      .removeClass('far')
-      .addClass('fa-spin')
-      .addClass('fa-sync')
-      .addClass('fas');
+    var icon = $('i', event.target).data('icon');
+    $('i:not(.fa-spin)', event.target).hide();
+    $('i.fa-spin', event.target).css('display', 'inline-block');
   });
 
   $('.toggle-link').on('ajax:complete', function(event) {
-    $(event.target)
-      .removeClass('fa-spin')
-      .removeClass('fa-sync');
+    var icon = $('i', event.target).data('icon');
+    $('i:not(.fa-spin)', event.target).show();
+    $('i.fa-spin', event.target).hide();
   });
 });
