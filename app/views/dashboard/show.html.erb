@@ -62,10 +62,10 @@
 								<div>
 									<div class="columns">
 										<div class="column has-text-centered">
-											<p><strong><%= post.bedrooms %></strong> <span class="has-text-grey">Bed</span></p>
+											<p><strong><%= empty_value(post.bedrooms) %></strong> <span class="has-text-grey">Bed</span></p>
 										</div>
 										<div class="column has-text-centered">
-											<p><strong><%= post.bathrooms %></strong> <span class="has-text-grey">Bath</span></p>
+											<p><strong><%= empty_value(post.bathrooms) %></strong> <span class="has-text-grey">Bath</span></p>
 										</div>
 									</div>
 								</div>

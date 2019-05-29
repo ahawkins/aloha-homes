@@ -18,6 +18,7 @@ gem 'bulma-rails'
 gem 'simple-rss'
 gem 'jquery-rails'
 gem 'redis'
+gem 'pg'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

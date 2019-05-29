@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+
+CraigslistFeed.new.scrape do |post|
+  Rails.logger.info(:seed) { "Scraped #{post.link}" }
+end
+
+HicentralFeed.new.scrape do |post|
+  Rails.logger.info(:seed) { "Scraped #{post.link}" }
+end
