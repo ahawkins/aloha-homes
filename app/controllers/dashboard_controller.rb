@@ -34,7 +34,7 @@ class DashboardController < ApplicationController
   end
 
   def scrape_craigslist
-    Rails.cache.fetch([ :feed, :craigslist ], expires: 1.hour) do
+    Rails.cache.fetch([ :feed, :craigslist ], expires_in: 2.hours) do
       rss = open('https://honolulu.craigslist.org/search/oah/apa?availabilityMode=0&format=rss&hasPic=1&housing_type=4&housing_type=6&housing_type=9&max_price=3000&min_bathrooms=2&min_bedrooms=2&pets_dog=1')
       feed = SimpleRSS.parse(rss)
       feed.items.map do |item|
@@ -59,7 +59,7 @@ class DashboardController < ApplicationController
   end
 
   def scrape_hicentral
-    Rails.cache.fetch([ :feed, :hicentral ], expires: 1.hour) do
+    Rails.cache.fetch([ :feed, :hicentral ], expires_in: 2.hours) do
       first_page = 'http://propertysearch.hicentral.com/HBR/ForRent/?/Results/Neighborhood///295//128////////1/////3/////2/2//////////////2///'
 
       html = Nokogiri::HTML(open(first_page))
