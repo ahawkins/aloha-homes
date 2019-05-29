@@ -4,7 +4,9 @@ class HicentralFeed
 
     html = Nokogiri::HTML(open(first_page))
 
-    posts = scrape_page(html)
+    posts = scrape_page(html) do |post|
+      yield post if block_given?
+    end
 
     page_links = html.css('div.P-ResultsHeader a').select do |element|
       element.text =~ /\d+/ && !first_page.ends_with?(element['href'])
@@ -15,9 +17,11 @@ class HicentralFeed
     page_links.each_with_object(posts) do |path, bucket|
       html = Nokogiri::HTML(open("http://propertysearch.hicentral.com/#{path}"))
 
-      bucket.concat(scrape_page(html)) do |record|
-        yield record if block_given?
+      items = scrape_page(html) do |post|
+        yield post if block_given?
       end
+
+      posts.concat(items)
     end
   end
 
